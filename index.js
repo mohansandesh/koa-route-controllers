@@ -31,19 +31,21 @@ class KoaRouteControllers{
   }
 
   #defineRoute(method, path, ControllerClass, actionName){
+    const controllerName = ControllerClass.name.replace('Controller', '').toLowerCase();
+    
     this.router[method](
-      `${ControllerClass.name.toLowerCase()}_${actionName}`,
+      `${controllerName}_${actionName}`,
       path,
-      async (ctx) => await this.#routeHandler(ctx, ControllerClass, actionName)
+      async (ctx) => await this.#routeHandler(ctx, ControllerClass, controllerName, actionName)
     );
   }
 
-  async #routeHandler(ctx, ControllerClass, actionName){
+  async #routeHandler(ctx, ControllerClass, controllerName, actionName){
     const classInstance = new ControllerClass();
     classInstance.ctx = ctx;
 
     // Add some meta data to ctx state
-    ctx.state.controllerName = ControllerClass.name;
+    ctx.state.controllerName = controllerName;
     ctx.state.actionName = actionName;
     ctx.state.url = this.router.url.bind(this.router);
 

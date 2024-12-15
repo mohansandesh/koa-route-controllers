@@ -1,7 +1,7 @@
 // 
 // Controller Class
 //
-class Hello{
+class HelloController{
   async before(){
     console.log(`> before called for ${this.ctx.state.controllerName}#${this.ctx.state.actionName}.`);
   }
@@ -13,7 +13,13 @@ class Hello{
       hello: parseInt(Math.random() * 1000),
       urls: {
         hello_home: this.ctx.state.url('hello_home'),
-        hello_welcome: this.ctx.state.url('hello_welcome')
+        hello_welcome: this.ctx.state.url('hello_welcome'),
+        hello_new: this.ctx.state.url('hello_new'),
+        hello_show: this.ctx.state.url('hello_show', 1),
+        hello_edit: this.ctx.state.url('hello_edit', 1),
+        hello_create: this.ctx.state.url('hello_create'),
+        hello_update: this.ctx.state.url('hello_update', 1),
+        hello_destroy: this.ctx.state.url('hello_destroy', 1),
       }
     };
   }
@@ -33,8 +39,14 @@ const Koa = require('koa');
 const KoaRouteControllers = require('../index');
 
 const routeControllers = new KoaRouteControllers()
-                      .get('/', Hello, 'home')
-                      .get('/welcome', Hello, 'welcome');
+.get('/', HelloController, 'home')
+.get('/welcome', HelloController, 'welcome')
+.get('/new', HelloController, 'new')
+.get('/show/:id', HelloController, 'show')
+.get('/edit/:id', HelloController, 'edit')
+.post('/create', HelloController, 'create')
+.patch('/update/:id', HelloController, 'update')
+.delete('/destroy/:id', HelloController, 'destroy');
 
 const app = new Koa();
 app.use(routeControllers.routes());

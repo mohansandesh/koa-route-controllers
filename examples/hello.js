@@ -12,14 +12,14 @@ class HelloController{
     this.ctx.body = {
       hello: parseInt(Math.random() * 1000),
       urls: {
-        hello_home: this.ctx.state.url('hello_home'),
-        hello_welcome: this.ctx.state.url('hello_welcome'),
-        hello_new: this.ctx.state.url('hello_new'),
-        hello_show: this.ctx.state.url('hello_show', 1),
-        hello_edit: this.ctx.state.url('hello_edit', 1),
-        hello_create: this.ctx.state.url('hello_create'),
-        hello_update: this.ctx.state.url('hello_update', 1),
-        hello_destroy: this.ctx.state.url('hello_destroy', 1),
+        home_hello: this.ctx.state.url('home_hello'),
+        welcome_hello: this.ctx.state.url('welcome_hello'),
+        new_hello: this.ctx.state.url('new_hello'),
+        show_hello: this.ctx.state.url('show_hello', 1),
+        edit_hello: this.ctx.state.url('edit_hello', 1),
+        create_hello: this.ctx.state.url('create_hello'),
+        update_hello: this.ctx.state.url('update_hello', 1),
+        destroy_hello: this.ctx.state.url('destroy_hello', 1)
       }
     };
   }

@@ -6,7 +6,7 @@ const Router = require('@koa/router');
  */
 class KoaRouteControllers{
   /**
-   * Holds the instance of @koa/router
+   * Holds an instance of @koa/router
    */
   router = new Router();
 

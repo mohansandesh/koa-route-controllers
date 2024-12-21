@@ -8,6 +8,10 @@
 class AppController{
   async before(){
     this.beforeValue = 123;
+
+    if(this.ctx.state.actionName == 'actionThatDoesNotGetCalled'){
+      this.ctx.throw(400);
+    }
   }
 
   async root(){
@@ -65,6 +69,12 @@ class AppController{
       currentUrl: this.ctx.state.url('example', 1)
     }
   }
+
+  async actionThatDoesNotGetCalled(){
+    this.ctx.body = {
+      actionName: 'actionThatDoesNotGetCalled'
+    }
+  }
 }
 
 
@@ -84,6 +94,9 @@ const routeControllers = new KoaRouteControllers()
 
 // asName action
 .get('/as_name/:id', AppController, 'asNameAction', 'example')
+
+// before renders without calling action
+.get('/actionThatDoesNotGetCalled', AppController, 'actionThatDoesNotGetCalled')
 
 const app = new Koa();
 app.use(routeControllers.routes());

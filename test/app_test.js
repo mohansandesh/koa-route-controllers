@@ -49,4 +49,10 @@ module.exports = async (t, request)=>{
     strictEqual(res.body.beforeValue, 123);
     strictEqual(res.body.currentUrl, '/as_name/1');
   });
+
+  await t.test('get actionThatDoesNotGetCalled url', async () => {
+    const res = await request.get('/actionThatDoesNotGetCalled');
+    strictEqual(res.body.actionName, undefined);
+    strictEqual(res.statusCode, 400);
+  });
 }

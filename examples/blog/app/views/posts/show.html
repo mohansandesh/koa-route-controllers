@@ -1,0 +1,14 @@
+<h1>#<%= post.id %> <%= post.title %></h1>
+<p><%= post.body %></p>
+
+<h2 class="border-bottom">Comments (<%= comments.length %>)</h2>
+<ul>
+  <% for(const comment of comments) { %>
+    <li><%= comment.body %></li>
+  <% } %>
+</ul>
+
+<form action="<%= url('create_comments', post.id) %>" method="post">
+  <input type="text" name="body" />
+  <input type="submit" value="Add Comment"/>
+</form>

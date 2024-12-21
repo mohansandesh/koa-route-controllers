@@ -1,0 +1,7 @@
+<h1>Posts (<%= posts.length %>)</h1>
+
+<% for(const post of posts) { %>
+  <h2>
+    <a href='<%= url('show_posts', post.id) %>'>#<%= post.id %> <%= post.title %></a>
+  </h2>
+<% } %>

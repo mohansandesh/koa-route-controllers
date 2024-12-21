@@ -145,6 +145,8 @@ class KoaRouteControllers{
     
     if(typeof(classInstance[actionName]) === 'function'){
       await classInstance[actionName]();
+    } else {
+      console.error(`Action: ${actionName} not found for Controller: ${ControllerClass.name}`);
     }
   }
 };

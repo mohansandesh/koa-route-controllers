@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Example</title>
+  <style>
+    body{
+      max-width: 800px;
+      margin: 0 auto;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 1.05em;
+    }
+
+    .border-bottom{
+      border-bottom: 1px solid #CCC;
+      margin: 10px 0;
+      padding: 10px 0;
+    }
+
+    .mb-0{
+      margin-bottom: 0;
+    }
+
+    a{
+      color: rgb(13, 110, 253);
+      text-decoration: none;
+
+      &:hover{
+        text-decoration: underline;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="border-bottom">
+    <nav class="border-bottom">
+      <h1>Blog Example</h1>
+      <ul>
+        <li>
+          <a href="<%= url('home_posts') %>">Home</a>
+        </li>
+        <li>
+          <a href="<%= url('new_posts') %>">Add New Post</a>
+        </li>
+      </ul>
+    </nav>
+
+    <%- body %>
+  </div>
+</body>
+</html>

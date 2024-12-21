@@ -1,4 +1,8 @@
 // 
+// App used for testing
+// 
+
+// 
 // Controller Class
 //
 class AppController{
@@ -10,7 +14,7 @@ class AppController{
     this.ctx.body = {
       root: true,
       beforeValue: this.beforeValue,
-      currentUrl: this.ctx.state.url('app_root')
+      currentUrl: this.ctx.state.url('root_app')
     };
   }
 
@@ -18,7 +22,7 @@ class AppController{
     this.ctx.body = {
       put: true,
       beforeValue: this.beforeValue,
-      currentUrl: this.ctx.state.url('app_put', 1)
+      currentUrl: this.ctx.state.url('put_app', 1)
     }
   }
 
@@ -26,7 +30,7 @@ class AppController{
     this.ctx.body = {
       post: true,
       beforeValue: this.beforeValue,
-      currentUrl: this.ctx.state.url('app_post', 1)
+      currentUrl: this.ctx.state.url('post_app', 1)
     }
   }
 
@@ -34,7 +38,7 @@ class AppController{
     this.ctx.body = {
       patch: true,
       beforeValue: this.beforeValue,
-      currentUrl: this.ctx.state.url('app_patch', 1)
+      currentUrl: this.ctx.state.url('patch_app', 1)
     }
   }
 
@@ -42,7 +46,7 @@ class AppController{
     this.ctx.body = {
       delete: true,
       beforeValue: this.beforeValue,
-      currentUrl: this.ctx.state.url('app_delete', 1)
+      currentUrl: this.ctx.state.url('delete_app', 1)
     }
   }
 
@@ -50,7 +54,15 @@ class AppController{
     this.ctx.body = {
       del: true,
       beforeValue: this.beforeValue,
-      currentUrl: this.ctx.state.url('app_del', 1)
+      currentUrl: this.ctx.state.url('del_app', 1)
+    }
+  }
+
+  async asNameAction(){
+    this.ctx.body = {
+      asNameAction: true,
+      beforeValue: this.beforeValue,
+      currentUrl: this.ctx.state.url('example', 1)
     }
   }
 }
@@ -69,6 +81,9 @@ const routeControllers = new KoaRouteControllers()
 .patch('/patch/:id', AppController, 'patch')
 .delete('/delete/:id', AppController, 'delete')
 .del('/del/:id', AppController, 'del')
+
+// asName action
+.get('/as_name/:id', AppController, 'asNameAction', 'example')
 
 const app = new Koa();
 app.use(routeControllers.routes());

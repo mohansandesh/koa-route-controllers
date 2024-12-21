@@ -42,4 +42,11 @@ module.exports = async (t, request)=>{
     strictEqual(res.body.beforeValue, 123);
     strictEqual(res.body.currentUrl, '/del/1');
   });
+
+  await t.test('get asName url', async () => {
+    const res = await request.get('/as_name/1');
+    strictEqual(res.body.asNameAction, true);
+    strictEqual(res.body.beforeValue, 123);
+    strictEqual(res.body.currentUrl, '/as_name/1');
+  });
 }

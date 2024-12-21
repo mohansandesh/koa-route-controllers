@@ -1,45 +1,52 @@
 const Router = require('@koa/router');
 
 class KoaRouteControllers{
-  constructor(){
-    this.router = new Router();
-  }
+  router = new Router();
 
-  get(path, ControllerClass, actionName){
-    this.#defineRoute('get', path, ControllerClass, actionName);
+  get(path, ControllerClass, actionName, asName=null){
+    this.#defineRoute('get', path, ControllerClass, actionName, asName);
     return this;
   }
 
-  put(path, ControllerClass, actionName){
-    this.#defineRoute('put', path, ControllerClass, actionName);
+  put(path, ControllerClass, actionName, asName=null){
+    this.#defineRoute('put', path, ControllerClass, actionName, asName);
     return this;
   }
 
-  post(path, ControllerClass, actionName){
-    this.#defineRoute('post', path, ControllerClass, actionName);
+  post(path, ControllerClass, actionName, asName=null){
+    this.#defineRoute('post', path, ControllerClass, actionName, asName);
     return this;
   }
 
-  patch(path, ControllerClass, actionName){
-    this.#defineRoute('patch', path, ControllerClass, actionName);
+  patch(path, ControllerClass, actionName, asName=null){
+    this.#defineRoute('patch', path, ControllerClass, actionName, asName);
     return this;
   }
 
-  delete(path, ControllerClass, actionName){
-    this.#defineRoute('delete', path, ControllerClass, actionName);
+  delete(path, ControllerClass, actionName, asName=null){
+    this.#defineRoute('delete', path, ControllerClass, actionName, asName);
     return this;
   }
 
-  del(path, ControllerClass, actionName){
-    this.#defineRoute('del', path, ControllerClass, actionName);
+  del(path, ControllerClass, actionName, asName=null){
+    this.#defineRoute('del', path, ControllerClass, actionName, asName);
     return this;
   }
 
-  #defineRoute(method, path, ControllerClass, actionName){
-    const controllerName = ControllerClass.name.replace('Controller', '').toLowerCase();
+  routes(){
+    return this.router.routes();
+  }
+
+
+  // 
+  // Private methods
+  // 
+
+  #defineRoute(method, path, ControllerClass, actionName, asName=null){
+    const controllerName = ControllerClass.name.replace(/Controller$/, '').toLowerCase();
     
     this.router[method](
-      `${controllerName}_${actionName}`,
+      asName || `${actionName}_${controllerName}`,
       path,
       async (ctx) => await this.#routeHandler(ctx, ControllerClass, controllerName, actionName)
     );
@@ -61,10 +68,6 @@ class KoaRouteControllers{
     if(typeof(classInstance[actionName]) === 'function'){
       await classInstance[actionName]();
     }
-  }
-  
-  routes(){
-    return this.router.routes();
   }
 };
 

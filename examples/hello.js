@@ -46,7 +46,8 @@ const routeControllers = new KoaRouteControllers()
 .get('/edit/:id', HelloController, 'edit')
 .post('/create', HelloController, 'create')
 .patch('/update/:id', HelloController, 'update')
-.delete('/destroy/:id', HelloController, 'destroy');
+.delete('/destroy/:id', HelloController, 'destroy')
+.del('/_destroy/:id', HelloController, 'destroy');
 
 const app = new Koa();
 app.use(routeControllers.routes());

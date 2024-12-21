@@ -30,6 +30,11 @@ class KoaRouteControllers{
     return this;
   }
 
+  del(path, ControllerClass, actionName){
+    this.#defineRoute('del', path, ControllerClass, actionName);
+    return this;
+  }
+
   #defineRoute(method, path, ControllerClass, actionName){
     const controllerName = ControllerClass.name.replace('Controller', '').toLowerCase();
     

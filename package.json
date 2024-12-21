@@ -4,6 +4,7 @@
   "description": "Controller based routing for Koa",
   "main": "index.js",
   "scripts": {
+    "start": "node examples/blog",
     "watch": "npx nodemon -e js,html examples/blog",
     "test": "node test"
   },

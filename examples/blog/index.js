@@ -34,3 +34,5 @@ render(app, {
   root: __dirname + '/app/views'
 });
 app.listen(3000);
+
+console.log('> Blog example listening on http://localhost:3000');

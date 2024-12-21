@@ -24,19 +24,6 @@ class KoaRouteControllers{
   }
 
   /**
-   * Adds a http put method to the router
-   * @param {string} path 
-   * @param {*} ControllerClass 
-   * @param {string} actionName 
-   * @param {string} asName 
-   * @returns this
-   */
-  put(path, ControllerClass, actionName, asName=null){
-    this.#defineRoute('put', path, ControllerClass, actionName, asName);
-    return this;
-  }
-
-  /**
    * Adds a http post method to the router
    * @param {string} path 
    * @param {*} ControllerClass 
@@ -46,6 +33,19 @@ class KoaRouteControllers{
    */
   post(path, ControllerClass, actionName, asName=null){
     this.#defineRoute('post', path, ControllerClass, actionName, asName);
+    return this;
+  }
+
+  /**
+   * Adds a http put method to the router
+   * @param {string} path 
+   * @param {*} ControllerClass 
+   * @param {string} actionName 
+   * @param {string} asName 
+   * @returns this
+   */
+  put(path, ControllerClass, actionName, asName=null){
+    this.#defineRoute('put', path, ControllerClass, actionName, asName);
     return this;
   }
 
@@ -145,8 +145,10 @@ class KoaRouteControllers{
     
     if(typeof(classInstance[actionName]) === 'function'){
       await classInstance[actionName]();
-    } else {
-      console.error(`Action: ${actionName} not found for Controller: ${ControllerClass.name}`);
+    }
+
+    if(typeof(classInstance.after) === 'function'){
+      await classInstance.after();
     }
   }
 };

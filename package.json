@@ -10,7 +10,8 @@
   "author": "Mohan Sandesh",
   "license": "MIT",
   "devDependencies": {
-    "koa": "^2.15.3"
+    "koa": "^2.15.3",
+    "supertest": "^7.0.0"
   },
   "dependencies": {
     "@koa/router": "^13.1.0"

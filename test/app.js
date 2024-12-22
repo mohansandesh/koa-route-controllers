@@ -18,7 +18,7 @@ class AppController{
     this.ctx.body = {
       root: true,
       beforeValue: this.beforeValue,
-      currentUrl: this.ctx.state.url('root_app')
+      currentUrl: this.ctx.state.url('app_root')
     };
   }
 
@@ -26,7 +26,7 @@ class AppController{
     this.ctx.body = {
       put: true,
       beforeValue: this.beforeValue,
-      currentUrl: this.ctx.state.url('put_app', 1)
+      currentUrl: this.ctx.state.url('app_put', 1)
     }
   }
 
@@ -34,7 +34,7 @@ class AppController{
     this.ctx.body = {
       post: true,
       beforeValue: this.beforeValue,
-      currentUrl: this.ctx.state.url('post_app', 1)
+      currentUrl: this.ctx.state.url('app_post', 1)
     }
   }
 
@@ -42,7 +42,7 @@ class AppController{
     this.ctx.body = {
       patch: true,
       beforeValue: this.beforeValue,
-      currentUrl: this.ctx.state.url('patch_app', 1)
+      currentUrl: this.ctx.state.url('app_patch', 1)
     }
   }
 
@@ -50,7 +50,7 @@ class AppController{
     this.ctx.body = {
       delete: true,
       beforeValue: this.beforeValue,
-      currentUrl: this.ctx.state.url('delete_app', 1)
+      currentUrl: this.ctx.state.url('app_delete', 1)
     }
   }
 
@@ -58,7 +58,7 @@ class AppController{
     this.ctx.body = {
       del: true,
       beforeValue: this.beforeValue,
-      currentUrl: this.ctx.state.url('del_app', 1)
+      currentUrl: this.ctx.state.url('app_del', 1)
     }
   }
 

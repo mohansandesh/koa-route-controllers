@@ -1,7 +1,7 @@
 {
   "name": "koa-route-controllers",
   "version": "0.1.0",
-  "description": "Controller based routing for Koa",
+  "description": "Ruby on Rails style MVC controller routing for Koa.js",
   "main": "index.js",
   "scripts": {
     "start": "node examples/blog",
@@ -10,13 +10,31 @@
   },
   "author": "Mohan Sandesh",
   "license": "MIT",
+  "dependencies": {
+    "@koa/router": "^13.1.0"
+  },
   "devDependencies": {
     "@koa/ejs": "^5.1.0",
     "koa": "^2.15.3",
     "koa-body": "^6.0.1",
     "supertest": "^7.0.0"
   },
-  "dependencies": {
-    "@koa/router": "^13.1.0"
-  }
+  "engines": {
+    "node": ">= 18"
+  },
+  "keywords": [
+    "koa",
+    "koajs",
+    "middleware",
+    "route",
+    "router",
+    "mvc",
+    "controller",
+    "controllers"
+  ],
+  "homepage": "https://github.com/mohansandesh/koa-route-controllers#readme",
+  "repository": "github:mohansandesh/koa-route-controllers",
+  "files":[
+    "index.js"
+  ]
 }

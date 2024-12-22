@@ -1,12 +1,12 @@
 # Koa Route Controllers
 
-*Ruby on Rails* style routing for *Koa.js*. Define app routes as controller actions.
+*Ruby on Rails* style routing for *Koa.js*. Define app routes as MVC controller actions.
 
-It uses [koa-router](https://github.com/koajs/router) package underneath, which also provides URL helpers.
+It uses [koa-router](https://github.com/koajs/router) package internally, which also provides URL helpers.
 
 ## Example
 
-Below is an example of a controller and routes. Find a working [basic example](examples/hello.js) and a [blog example](examples/blog/) in the examples directory.
+Below is an example of a controller and routes. Find a working [basic example](https://github.com/mohansandesh/koa-route-controllers/blob/main/examples/hello.js) and a [blog example](https://github.com/mohansandesh/koa-route-controllers/tree/main/examples/blog) in the examples directory.
 
 ```js
 // Controller Class
@@ -48,11 +48,11 @@ app.listen(3000);
 
 `KoaRouteControllers` class instance provides the below http methods. These methods can be chained.
 
-Each of the http methods takes a `path` string, `ControllerClass` reference, `actionName` string and an optional `asName` string. If `asName` is null, it is automatically set to `actionName_controllerName`.
+Each of the http methods takes a `path` string, `ControllerClass` reference, `actionName` string and an optional `asName` string. If `asName` is null, it is automatically set to `controllerName_actionName`.
 
 `path` string can contain params defined with a `:`, for example - `/show/:post_id/:comment_id`. Params can be accessed in actions with `this.ctx.params.name`, for example `this.ctx.params.post_id` and `this.ctx.params.comment_id`.
 
-URL helper method `url` is available in `this.ctx.state.url`. For example - `this.ctx.state.url('actionName_controllerName', param1, param2, ...)`. `this.state` is made available in views, so that just `url` can be used. Note that the word `Controller` is removed from `controllerName`. So an example URL would be `url('show_posts')`.
+URL helper method `url` is available in `this.ctx.state.url`. For example - `this.ctx.state.url('controllerName_actionName', param1, param2, ...)`. `this.state` is made available in views, so that just `url` can be used. Note that the word `Controller` is removed from `controllerName`. So an example URL would be `url('posts_show', 1)`.
 
 ### get
 
@@ -136,7 +136,7 @@ If the `router` instance is needed for additional setup (ex: allowedMethods), it
 
 ### Controller Helpers
 
-[Here](examples/blog/app/controllers/base_controller.js) is an example of a base controller that defines `render` helper.
+[Here](https://github.com/mohansandesh/koa-route-controllers/blob/main/examples/blog/app/controllers/base_controller.js) is an example of a base controller that defines `render` helper.
 
 ### State
 
@@ -147,5 +147,6 @@ Any properties defined on `this.ctx.state` will be available in views, as define
 Clone the repo and run -
 
 ```
+npm install
 npm start
 ```

@@ -117,7 +117,7 @@ class KoaRouteControllers{
     const controllerName = ControllerClass.name.replace(/Controller$/, '').toLowerCase();
     
     this.router[method](
-      asName || `${actionName}_${controllerName}`,
+      asName || `${controllerName}_${actionName}`,
       path,
       async (ctx) => await this.#routeHandler(ctx, ControllerClass, controllerName, actionName)
     );

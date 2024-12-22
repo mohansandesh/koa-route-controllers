@@ -44,6 +44,12 @@ app.use(routeControllers.routes());
 app.listen(3000);
 ```
 
+## Install
+
+```
+npm install koa-route-controllers
+```
+
 ## API
 
 `KoaRouteControllers` class instance provides the below http methods. These methods can be chained.

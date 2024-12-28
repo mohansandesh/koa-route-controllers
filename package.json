@@ -1,6 +1,6 @@
 {
   "name": "koa-route-controllers",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Ruby on Rails style MVC controller routing for Koa.js",
   "main": "index.js",
   "scripts": {
@@ -34,7 +34,7 @@
   ],
   "homepage": "https://github.com/mohansandesh/koa-route-controllers#readme",
   "repository": "github:mohansandesh/koa-route-controllers",
-  "files":[
+  "files": [
     "index.js"
   ]
 }

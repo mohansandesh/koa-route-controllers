@@ -6,7 +6,9 @@ class PostsController extends BaseController {
   // Throw (this.ctx.throw(4xx)) to stop execution.
   // If you have before action in base controller, make sure you call super here.
   async before() {
-    if(['show'].includes(this.ctx.state.actionName)){
+    if(
+      ['show', 'example-action-1', 'example-action-2'].includes(this.state.actionName)
+    ){
       this.#setPost();
     }
   }
@@ -18,7 +20,7 @@ class PostsController extends BaseController {
   }
 
   async show() {
-    this.comments = store.comments.filter((post)=>post.post_id == this.ctx.params.id);
+    this.comments = store.comments.filter((post)=>post.post_id == this.params.id);
 
     await this.render();
   }
@@ -36,14 +38,14 @@ class PostsController extends BaseController {
       body: this.ctx.request.body.body
     });
     
-    this.ctx.redirect(this.ctx.state.url('posts_home'));
+    this.ctx.redirect(this.url('posts_home'));
   }
 
   // 
   // Private methods
   // 
   #setPost() {
-    this.post = store.posts.find((post)=>post.id == this.ctx.params.id);
+    this.post = store.posts.find((post)=>post.id == this.params.id);
 
     if(!this.post){
       this.ctx.throw(404, 'Post not found!');

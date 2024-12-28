@@ -4,11 +4,11 @@ const store = require('../store');
 class CommentsController extends BaseController {
   async create() {
     store.comments.push({
-      post_id: this.ctx.params.id,
+      post_id: this.params.id,
       body: this.ctx.request.body.body
     });
     
-    this.ctx.redirect(this.ctx.state.url('posts_show', this.ctx.params.id));
+    this.ctx.redirect(this.url('posts_show', this.params.id));
   }
 }
 

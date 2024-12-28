@@ -43,16 +43,42 @@ module.exports = async (t, request)=>{
     strictEqual(res.body.currentUrl, '/del/1');
   });
 
-  await t.test('get asName url', async () => {
+  await t.test('get routeName url', async () => {
     const res = await request.get('/as_name/1');
-    strictEqual(res.body.asNameAction, true);
+    strictEqual(res.body.routeNameAction, true);
     strictEqual(res.body.beforeValue, 123);
     strictEqual(res.body.currentUrl, '/as_name/1');
   });
 
+  await t.test('get actionThatRedirectsInBefore url', async () => {
+    const res = await request.get('/actionThatRedirectsInBefore');
+    strictEqual(Object.keys(res.body).length, 0);
+    strictEqual(res.statusCode, 302);
+    strictEqual(res.headers.location, '/abc');
+  });
+
+  await t.test('get actionThatThrows400 url', async () => {
+    const res = await request.get('/actionThatThrows400');
+    strictEqual(Object.keys(res.body).length, 0);
+    strictEqual(res.statusCode, 400);
+  });
+
+  await t.test('get actionThatThrows404 url', async () => {
+    const res = await request.get('/actionThatThrows404');
+    strictEqual(Object.keys(res.body).length, 0);
+    strictEqual(res.statusCode, 404);
+  });
+
   await t.test('get actionThatDoesNotGetCalled url', async () => {
     const res = await request.get('/actionThatDoesNotGetCalled');
-    strictEqual(res.body.actionName, undefined);
+    strictEqual(Object.keys(res.body).length, 0);
     strictEqual(res.statusCode, 400);
+  });
+
+  await t.test('redirects url', async () => {
+    const res = await request.get('/abc');
+    strictEqual(Object.keys(res.body).length, 0);
+    strictEqual(res.statusCode, 301);
+    strictEqual(res.headers.location, '/bcd');
   });
 }

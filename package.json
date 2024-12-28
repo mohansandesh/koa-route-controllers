@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node examples/blog",
     "watch": "npx nodemon -e js,html examples/blog",
-    "test": "node test"
+    "test": "node tests"
   },
   "author": "Mohan Sandesh",
   "license": "MIT",

@@ -1,9 +1,14 @@
+/**
+ * This is the BaseController that will be inherited by all controllers.
+ * 
+ * Define common functionality between all controllers here.
+ */
 class BaseController {
-  // Helper function to automatically render `controller/action.html` view
+  // Helper function to render `controller/action.html` view
   // View data is set to this, so anything within `this` is accessible in views
   async render() {
     await this.ctx.render(
-      `${this.ctx.state.controllerName}/${this.ctx.state.actionName}`,
+      `${this.state.controllerName}/${this.state.actionName}`,
       this
     );
   }

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Blog Example</title>
+  <title>Sub Apps Example</title>
   <style>
     body{
       max-width: 800px;
@@ -43,13 +43,40 @@
 <body>
   <div class="border-bottom">
     <nav class="border-bottom">
-      <h1>Blog Example</h1>
+      <h1>Sub Apps Example</h1>
       <ul>
         <li>
-          <a href="<%= url('posts_home') %>">Home</a>
+          <h2>Main App</h2>
+          <ul>
+            <li>
+              <a href="/">Home</a>
+            </li>
+            <li>
+              <a href="/about">About</a>
+            </li>
+          </ul>
         </li>
         <li>
-          <a href="<%= url('posts_new') %>">Add New Post</a>
+          <h2>Sub App 1</h2>
+          <ul>
+            <li>
+              <a href="/sub-app-1">Home</a>
+            </li>
+            <li>
+              <a href="/sub-app-1/about">About</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <h2>Sub App 2</h2>
+          <ul>
+            <li>
+              <a href="/sub-app-2">Home</a>
+            </li>
+            <li>
+              <a href="/sub-app-2/about">About</a>
+            </li>
+          </ul>
         </li>
       </ul>
     </nav>

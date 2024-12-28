@@ -1,3 +1,11 @@
+/**
+ * 
+ * A MVC blog example with posts and comments.
+ * 
+ * To run: node examples/blog
+ * 
+ */
+
 const Koa = require('koa');
 const render = require("@koa/ejs");
 const { koaBody } = require('koa-body');
@@ -35,4 +43,4 @@ render(app, {
 });
 app.listen(3000);
 
-console.log('> Blog example listening on http://localhost:3000');
+console.log('> Example listening on http://localhost:3000');

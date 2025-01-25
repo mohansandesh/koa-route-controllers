@@ -1,6 +1,6 @@
 # Koa Route Controllers
 
-*Ruby on Rails* style routing for *Koa.js*. Define app routes as MVC controller actions.
+MVC controller routing for *Koa.js*. Define app routes as MVC controller actions.
 
 ## Features
 
@@ -11,28 +11,7 @@
 
 ## Example
 
-Here is an example of a controller class and routes. [More examples](#examples).
-
-```js
-// Controller Class
-class HelloController {
-  // home action
-  async home() {
-    this.ctx.body = {
-      hello: 'Koa'
-    };
-  }
-
-  // show action
-  async show() {
-    this.ctx.body = {
-      show: 'post'
-    };
-  }
-
-  // More actions
-}
-```
+Here is an example of routes and a controller class. [More examples](#examples).
 
 ```js
 // Koa app
@@ -54,6 +33,27 @@ const routeControllers = new KoaRouteControllers()
 const app = new Koa();
 app.use(routeControllers.routes());
 app.listen(3000);
+```
+
+```js
+// Controller Class
+class HelloController {
+  // home action
+  async home() {
+    this.ctx.body = {
+      hello: 'Koa'
+    };
+  }
+
+  // show action
+  async show() {
+    this.ctx.body = {
+      show: 'post'
+    };
+  }
+
+  // More actions
+}
 ```
 
 ## Install
@@ -261,4 +261,4 @@ Here are some examples apps. To run these examples, clone the repo, run `npm ins
 
 ## License
 
-[MIT](https://github.com/mohansandesh/koa-route-controllers/blob/main/LICENSE)
+MIT
